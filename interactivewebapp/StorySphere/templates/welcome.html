@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HydroConnect</title>
+
+    {% load static %} <!-- Load the static template tag -->
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- google fonts link-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap" rel="stylesheet">
+
+    <!-- css file link  -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+            text-align: center; 
+        }
+
+        .abinibi {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0; 
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            margin: auto; 
+            padding: 20px; 
+        }
+
+        #logo {
+            font-size: 36px;
+            font-weight: bold;
+            color: lightblue;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        #logo img {
+            width: 30px; 
+            margin-right: 10px; 
+        }
+
+        #image {
+            margin-top: 20px;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+        }
+
+        #tagline {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        hr {
+            width: 80%;
+            margin: 20px auto;
+            border-color: #ccc;
+        }
+
+        button {
+            border: none;
+            outline: none;
+            padding: 8px;
+            width: 270px;
+            color: #fff;
+            font-size: 16px;
+            letter-spacing: 1.2px;
+            cursor: pointer;
+            margin-top: 30px;
+            margin-bottom: 60px;
+            border-radius: 5px;
+            background: rgba(0, 0, 225, 0.8);
+            border: 1px solid rgba(0, 0, 225, 0.8);
+        }
+
+        button:hover {
+            background: #fff;
+            color: rgba(0, 0, 225, 0.8);
+        }
+
+        .button2 {
+            color: rgba(0, 0, 225, 0.8);
+            background: #fff;
+            border: 1px solid rgba(0, 0, 225, 0.8);
+        }
+
+        .button2:hover {
+            background: rgba(0, 0, 225, 0.8);
+            color: #fff;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            button{
+                margin-bottom: 0;
+            }
+            .button2 {
+                margin-top: 30px;
+                margin-bottom: 60px;
+            }
+            #tagline {
+                margin-top: 20px;
+                font-size: 18px;
+            }
+
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <section class="abinibi">
+        <div class="container">
+            <div id="logo">
+                <img src="{% static 'images/logo.png' %}" alt="HydroConnect Logo">
+                HydroConnect
+            </div>
+            <img id="image" src="{% static 'images/10.jpg' %}" alt="HydroConnect Image">
+            <div id="tagline">
+                HydroConnect: Uniting Communities, Securing Water Futures in the DRC.
+            </div>
+            <hr>
+            <a href="{% url 'register' %}">
+                <button>Sign Up</button>
+            </a>
+            <a href="{% url 'login' %}">
+                <button class="button2">Login</button>
+            </a>
+        </div>
+    </section>
+    
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

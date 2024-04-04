@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+
+    {% load static %} <!-- Load the static template tag -->
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- Navbar Section -->
+    <section id="navber">
+        <div class="nav-section">
+            <nav>
+                <div class="logo">
+                    <img src="{% static 'images/LOGO1.png' %}" alt="logo">
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li><a href="{% url 'index' %}l">HOME</a></li>
+                        <li><a href="{% url 'index' %}">ABOUT</a></li>
+                        <li><a href="{% url 'index' %}">STORIES</a></li>
+                        <li><a href="{% url 'index' %}">BLOG</a></li>
+                        <li><a href="{% url 'index' %}">CONTACT</a></li>
+                    </ul>
+                </div>
+                <div class="nav-btn">
+                    <a href="#"><img src="{% static 'images/bag.svg' %}" alt=""></a>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Return Section -->
+    <section id="Return">
+        <div class="Return-section">
+            <div class="Return-overlay">
+                <div class="Return-text">
+                    <h1>WELCOME TO<br> STORYSPHERE</h1>
+                    <p>An Interactive Storytelling Platform for immersive learning experiences.</p>
+                    <a href="#">Discover More</a>
+                </div> 
+            </div>
+        </div>
+        <div class="Return-about">
+            <div class="Return-about-image">
+                <div class="about-1">
+                    <img src="{% static 'images/aboutimg1.png' %}" alt="">
+                </div>
+                <div class="about-2">
+                    <img class="overflw-img" src="{% static 'images/about1.jpg' %}" alt="">
+                </div>
+            </div>
+            <div class="Return-about-text">
+                <h2>About Us</h2>
+                <h1>WELCOME TO STORYSPHERE INTERACTIVE STORY WEB APPLICATION</h1>
+                <p>Lorem ipsum dolor sit amet consectetur. Eget leo hac mauris aliquam luctus ut nascetur. Nunc sit odio tempor massa dui non. Quam nisi sagittis non tincidunt. Eu dolor gravida mattis sagittis aliquet eu tellus maecenas. Nisi a mattis ultrices id arcu massa nec leo non. Eget pretium nam felis eget varius faucibus velit. Malesuada facilisis habitasse eget tellus tristique turpis scelerisque lacus. Habitant vivamus ut et augue. Non id amet ut luctus consequat egestas id nunc.</p>
+                <div class="call-us">
+                    <a href="#">Discover More</a>
+                    <img src="{% static 'images/lo3.svg' %}" alt="">
+                    <div class="call-us-text">
+                        <h1>Call Us</h1>
+                        <p>+(684) 555-0102</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Islam Pillars Section -->
+    <section id="islam-pillars">
+        <div class="islam-pillars-texr">
+                <p>Stories</p>
+                <h1>FIVE PILLARS OF ISLAM</h1>
+            </div>
+            <div class="islam-pillars-images">
+                <div class="images-1">
+                    <img src="{% static 'images/3,1.jpg' %}" alt="" onclick="openModal('video1')">
+                    <h1>SHAHADAH</h1>
+                </div>
+                <div class="images-1">
+                    <img src="{% static 'images/3,2.jpg' %}" alt="" onclick="openModal('video1')">
+                    <h1>SALAH</h1>
+                </div>
+                <div class="images-1">
+                    <img src="{% static 'images/3,3.jpg' %}" alt="" onclick="openModal('video1')">
+                    <H1>SAWM</H1>
+                </div>
+                <div class="images-1">
+                    <img src="{% static 'images/,3,4.jpg' %}" alt="" onclick="openModal('video1')">
+                    <H1>JAKAH</H1>
+                </div>
+                <div class="images-1">
+                    <img src="{% static 'images/3,1.jpg' %}" alt="" onclick="openModal('video1')">
+                    <h1>HAJJ</h1>
+                </div>
+            </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="video1" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('video1')">&times;</span>
+            <!-- Add your video or book content here -->
+            <iframe width="95%" height="95%" src="https://www.youtube.com/embed/RroDdybvu5s?si=C9wNN6QJODP7ngXQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div id="video2" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('video2')">&times;</span>
+            <!-- Add your video or book content here -->
+            <iframe src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+   
+
+    <script type="text/javascript">
+// Function to open modal
+function openModal(modalId) {
+    var modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = "block";
+        modal.addEventListener("click", function(event) {
+            if (event.target === modal) {
+                closeModal(modalId);
+            }
+        });
+        
+        // Add event listener for close button
+        var closeButton = modal.querySelector(".close");
+        if (closeButton) {
+            closeButton.addEventListener("click", function() {
+                closeModal(modalId);
+            });
+        }
+    }
+}
+
+// Function to close modal
+function closeModal(modalId) {
+    var modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = "none";
+    }
+}
+
+
+    </script>
+</body>
+</html>
