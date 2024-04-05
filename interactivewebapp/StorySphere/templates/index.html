@@ -34,126 +34,121 @@
             background-position: center;
             opacity: 0.8; /* Adjust overlay opacity */
           }
-        #forum {
-            padding: 50px 0;
-        }
-        
-        .forum-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        .forum-container h2 {
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-        
-        #newTopicBtn {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-bottom: 20px;
-        }
-        
-        .forum-topics {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        
-        .topic-card {
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-        }
-        
-        .topic-card h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        
-        .topic-description {
-            color: #666;
-            margin-bottom: 15px;
-        }
-        
-        .topic-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-        
-        .topic-actions button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            font-size: 14px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        
-        .comments-section {
-            margin-top: 20px;
-        }
-        
-        .comments-section h4 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-        
-        .comment {
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-        }
-        
-        .comment p {
-            margin-bottom: 5px;
-        }
-        
-        .comment-actions button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 3px 6px;
-            font-size: 12px;
-            cursor: pointer;
-            border-radius: 3px;
-        }
+          /* Forum styles */
+          .forum-container {
+              padding: 20px;
+          }
+          
+          .forum-topics {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 20px;
+          }
+          
+          .topic-card {
+              border: 1px solid #ccc;
+              padding: 20px;
+              background-color: #f9f9f9;
+          }
+          
+          .topic-card h3 {
+              font-size: 20px;
+              margin-bottom: 10px;
+          }
+          
+          .topic-card p {
+              font-size: 16px;
+              margin-bottom: 10px;
+          }
 
-        /* Style for modal container */
-        .modal {
-            display: none; /* Initially hide the modal */
-            position: fixed;
-            z-index: 999999999999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-            overflow: auto; /* Enable scrolling if content exceeds modal size */
-        }
+          #newTopicBtn {
+            padding: 5px 20px;
+            width: auto; 
+            display: inline-block;
+            box-sizing: border-box;
+            cursor: pointer;
+          }
+          
+          .topic-actions button {
+              margin-right: 10px;
+              padding: 5px 20px;
+              border: none;
+              background-color: #3498db;
+              color: #fff;
+              cursor: pointer;
+              width: auto; 
+              display: inline-block;
+              box-sizing: border-box;
+          }
 
-        /* Style for modal content */
-        .modal-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #fefefe; /* Background color of the modal content */
-            padding: 20px;
-            border-radius: 10px;
-            width: 80%; /* Adjust the width as per your requirement */
-            max-width: 800px; /* Adjust the maximum width as per your requirement */
-            overflow: auto; /* Enable scrolling if content exceeds modal size */
-        }
+          .topic-actions button:hover {
+            background-color: #20b9;
+          }
+          
+          /* Modal styles */
+          .modal {
+              display: none;
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(0, 0, 0, 0.5);
+          }
+          
+          .modal-content {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              background-color: #fff;
+              padding: 20px;
+              border-radius: 5px;
+          }
+          
+          .close {
+              position: absolute;
+              top: 10px;
+              right: 10px;
+              font-size: 24px;
+              color: #555;
+              cursor: pointer;
+          }
+          
+          .modal h2 {
+              font-size: 24px;
+              margin-bottom: 10px;
+          }
+          
+          .modal label {
+              display: block;
+              margin-bottom: 5px;
+          }
+          
+          .modal input,
+          .modal textarea {
+              width: 100%;
+              padding: 5px;
+              margin-bottom: 10px;
+              border: 1px solid #ccc;
+              border-radius: 3px;
+          }
+          
+          .modal button {
+              padding: 8px 16px;
+              background-color: #3498db;
+              color: #fff;
+              border: none;
+              border-radius: 3px;
+              cursor: pointer;
+              width: auto; 
+              display: inline-block;
+              box-sizing: border-box;
+          }
+          
+          .modal button:hover {
+              background-color: #20b9;
+          }
 
         /* Style for close button */
         .close {
@@ -293,36 +288,36 @@
             <!-- Create New Topic Button -->
             <button id="newTopicBtn" onclick="openNewTopicModal()">Create New Topic</button>
             <!-- Forum Topics List -->
-<div class="forum-topics">
-    <!-- Django Templating to loop through topics -->
-    {% for topic in topics %}
-    <div class="topic-card">
-        <h3>{{ topic.title }}</h3>
-        <p>{{ topic.description }}</p>
-        <div class="topic-actions">
-            <button class="like-btn" onclick="likeTopic('{{ topic.id }}')">Like</button>
-            <button class="comment-btn" onclick="openCommentsModal('{{ topic.id }}')">Comment</button>
-            <button class="share-btn" onclick="shareTopic()">Share</button>
-        </div>
-        <!-- Comments Section -->
-        <div class="comments-section" id="commentsSection{{ topic.id }}">
-            <!-- Use a separate query to fetch comments for the current topic -->
-            {% for comment in topic.comments.all %}
-                <div class="comment-container">
-                    <p>{{ comment.comment_text }}</p>
-                    <div class="comment-actions">
-                        <button class="like-btn" onclick="likeComment('{{ comment.id }}')">Like</button>
-                        <!-- Add reply functionality here -->
+            <div class="forum-topics">
+                <!-- Django Templating to loop through topics -->
+                {% for topic in topics %}
+                <div class="topic-card">
+                    <h3>{{ topic.title }}</h3>
+                    <p>{{ topic.description }}</p>
+                    <div class="topic-actions">
+                        <button class="like-btn" onclick="likeTopic('{{ topic.id }}')">Like</button>
+                        <button class="comment-btn" onclick="openCommentsModal('{{ topic.id }}')">Comment</button>
+                        <button class="share-btn" onclick="shareTopic()">Share</button>
+                    </div>
+                    <!-- Comments Section -->
+                    <div class="comments-section" id="commentsSection{{ topic.id }}">
+                        <!-- Use a separate query to fetch comments for the current topic -->
+                        {% for comment in topic.comments.all %}
+                            <div class="comment-container">
+                                <p>{{ comment.comment_text }}</p>
+                                <div class="comment-actions">
+                                    <button class="like-btn" onclick="likeComment('{{ comment.id }}')">Like</button>
+                                    <!-- Add reply functionality here -->
+                                </div>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
-            {% endfor %}
-        </div>
-    </div>
-    {% endfor %}
-</div>
+                {% endfor %}
+            </div>
 
-        </div>
-    </section>
+                </div>
+            </section>
 
 <!-- New Topic Modal -->
 <div id="newTopicModal" class="modal">
