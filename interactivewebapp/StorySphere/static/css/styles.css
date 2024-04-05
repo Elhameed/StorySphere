@@ -174,6 +174,7 @@ nav {
   line-height: 30px;
   margin-bottom: 0;
 }
+
 .call-us {
   display: flex;
   align-items: center;
@@ -208,8 +209,8 @@ nav {
   text-transform: capitalize;
 }
 
-/* --------islam-pillars------- */
-#islam-pillars {
+/* --------Stories------- */
+#pillars {
   background: url(images/bg.png);
   overflow: hidden;
   padding-bottom: 90px;
@@ -217,7 +218,7 @@ nav {
   z-index: 1;
   text-align: center; 
 }
-#islam-pillars:before {
+#pillars:before {
   background: #f6f6f6;
   content: "";
   height: 100%;
@@ -228,7 +229,7 @@ nav {
   width: 100%;
   z-index: -11;
 }
-.islam-pillars-texr p {
+.pillars-texr p {
   color: #db9e30;
   font-family: Mulish,sans-serif;
   font-size: 20px;
@@ -237,7 +238,7 @@ nav {
   padding-top: 80px;
   margin-bottom: 3px;
 }
-.islam-pillars-texr h1 {
+.pillars-texr h1 {
   color: #000;
   font-size: 50px;
   font-weight: 700;
@@ -245,7 +246,7 @@ nav {
   margin-bottom: 40px;
   font-family: 'Cinzel Decorative', serif;
 }
-.islam-pillars-images {
+.pillars-images {
   display: flex;
   margin-left: 50px;
   margin-top: 80px;
@@ -299,8 +300,8 @@ nav {
   color: #aaa;
   position: absolute;
   top: 10px;
-  right: 20px;
-  font-size: 38px;
+  right: 40px;
+  font-size: 32px;
   font-weight: bold;
 }
 
@@ -610,138 +611,14 @@ button a {
   text-transform: capitalize;
   z-index: 1;
 }
-/* ---------our-vlog------- */
-#Our-bolg {
-  width: 100%;
-  height: auto;
-  margin-bottom: 100px;
-}
 
-.nsdjsddjh {
-  overflow: hidden;
-  display: flex;
-}
-.our-latest-news {
-  width: 412px;
-  height: auto;
-  margin-left: 30px;
-  margin-top: 50px;
-}
-.blog-img img {
-  border-radius: 40px;
-  width: 100%;
-}
-.dffgg {
-  margin-top: 10px;
-}
-.dffgg ul {
-  display: flex;
-  overflow: hidden;
-  list-style: none;
-}
-.dffgg ul li {
-  color: #656565;
-  display: inline-block;
-  font-family: Mulish,sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 35px;
-  padding-right: 15px;
-  position: relative;
-}
-.dffgg ul li::before {
-  background: #656565;
-  border-radius: 10px;
-  content: "";
-  height: 6px;
-  left: -10px;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-  width: 6px;
-}
-.taitle2 {
-  margin-top: 10px;
-  transition: all .3s ease-in-out;
-}
-.taitle2 a {
-  font-family: Cinzel Decorative,serif;
-  font-weight: 600;
-  font-size: 22px;
-  color: #000;
-  line-height: 35px;
-  padding-left: 0;
-  text-transform: uppercase;
-  text-decoration: none;
-}
-.taitle2 a:hover {
-  color: #db9e30;
-  transition: all .3s ease-in-out;
-}
-.readmore a {
-  color: #db9e30;
-  font-family: Mulish,sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 35px;
-  padding-left: 40px;
-  position: relative;
-  text-decoration: none;
-}
-.readmore a::before {
-  background: #db9e30;
-  content: "";
-  height: 2px;
-  left: 15px;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-  width: 30px;
-}
-/* ---------.prayertime-section------- */
-#prayertime-section {
-  margin-bottom: -110px;
-  position: relative;
-  z-index: 1;
-}
-.prayertime {
-  width: 96%;
-  margin-left: 2%;
-  display: flex;
-  overflow: hidden;
-  background: #db9e30;
-  border-radius: 60px;
-  padding: 70px 100px 40px;
-}
-.itempray {
-  width: 300px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-.itempray h2 {
-  color: #fff;
-  font-size: 30px;
-  font-weight: 700;
-  font-family: Cinzel Decorative,serif;
-  line-height: 40px;
-  margin-bottom: 0;
-  text-transform: uppercase;
-}
-.itempray span {
-  color: #fff;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 35px;
-}
 /* -------footer------ */
 
 
 #footer {
   background: #000;
   width: 100%;
-  height: 600px;
+  height: 800px;
 }
 .footer-event {
   display: flex;
@@ -1223,7 +1100,7 @@ button a {
 .home3prymary {
   background: #db9e30;
 }
-#home3islam-pillars {
+#home3pillars {
   overflow: hidden;
   padding-bottom: 90px;
   position: relative;

@@ -20,6 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap" rel="stylesheet">
 
     <style>
 
@@ -52,13 +53,18 @@
           }
           
           .topic-card h3 {
-              font-size: 20px;
+              font-size: 18px;
               margin-bottom: 10px;
+              color: #262626;
+              font-family: 'Cinzel Decorative', serif;
+              line-height: 50px;
           }
           
           .topic-card p {
               font-size: 16px;
               margin-bottom: 10px;
+              line-height: 30px;
+              font-family: 'Raleway', sans-serif;
           }
 
           #newTopicBtn {
@@ -66,23 +72,38 @@
             width: auto; 
             display: inline-block;
             box-sizing: border-box;
+            background: #db9e30;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 30px;
+            margin-bottom: 15px;
             cursor: pointer;
+          }
+          
+          #newTopicBtn:hover {
+            background:#d1a445;
           }
           
           .topic-actions button {
               margin-right: 10px;
               padding: 5px 20px;
               border: none;
-              background-color: #3498db;
-              color: #fff;
+              background:#d1a445;
+              font-family: 'Raleway', sans-serif;
               cursor: pointer;
               width: auto; 
               display: inline-block;
               box-sizing: border-box;
+              color: #fff;
+              font-size: 15px;
+              font-weight: 400;
+              line-height: 30px;
           }
 
           .topic-actions button:hover {
-            background-color: #20b9;
+            background-color: black;
+            color: #fff;
           }
           
           /* Modal styles */
@@ -166,6 +187,46 @@
             color: black; /* Hover color */
             text-decoration: none;
         }
+
+        .comment-list {
+            list-style-type:         }
+        
+        .comment-item {
+            color: black; /* Set text color to black */
+            margin-bottom: 10px;
+            /* Other styles for comments */
+        }
+
+        .more-stories-line {
+            text-align: center;
+            margin-top: 20px;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+            color: #777;
+            font-style: italic;
+        }
+        
+        .forum-container h1 {
+            color: #262626;
+            font-size: 40px;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: 700;
+            line-height: 50px;
+            margin-top: 10px;
+            text-align: center;
+          }
+
+          #footer {
+            margin-top: 40px;
+          }
+
+          .footer-event {
+            display: flex;
+            width: 96%;
+            margin-left: 2%;
+            padding-top: 80px;
+          }
+          
                 
 
     </style>
@@ -184,12 +245,12 @@
                         <li><a href="{% url 'index' %}l">HOME</a></li>
                         <li><a href="{% url 'index' %}">ABOUT</a></li>
                         <li><a href="{% url 'index' %}">STORIES</a></li>
-                        <li><a href="{% url 'index' %}">BLOG</a></li>
+                        <li><a href="{% url 'index' %}">FORUM</a></li>
                         <li><a href="{% url 'index' %}">CONTACT</a></li>
                     </ul>
                 </div>
                 <div class="nav-btn">
-                    <a href="#"><img src="{% static 'images/bag.svg' %}" alt=""></a>
+                    <a href="#"><img src="{% static 'images/profile-circle-svgrepo-com.svg' %}" alt=""></a>
                 </div>
             </nav>
         </div>
@@ -218,73 +279,95 @@
             <div class="Return-about-text">
                 <h2>About Us</h2>
                 <h1>WELCOME TO STORYSPHERE INTERACTIVE STORY WEB APPLICATION</h1>
-                <p>Lorem ipsum dolor sit amet consectetur. Eget leo hac mauris aliquam luctus ut nascetur. Nunc sit odio tempor massa dui non. Quam nisi sagittis non tincidunt. Eu dolor gravida mattis sagittis aliquet eu tellus maecenas. Nisi a mattis ultrices id arcu massa nec leo non. Eget pretium nam felis eget varius faucibus velit. Malesuada facilisis habitasse eget tellus tristique turpis scelerisque lacus. Habitant vivamus ut et augue. Non id amet ut luctus consequat egestas id nunc.</p>
+                <p><br>StorySphere is not just another platform; it's a gateway to immersive learning experiences. Our mission is to revolutionize education by bringing interactive storytelling to the forefront. We believe that stories have the power to inspire, educate, and transform lives.</p>
+                <p>At StorySphere, we're committed to bridging educational disparities by providing a platform that caters to diverse learners. Whether you're a student seeking engaging narratives or a lifelong learner exploring cultural and historical tales, StorySphere has something for everyone.</p>
                 <div class="call-us">
                     <a href="#">Discover More</a>
                     <img src="{% static 'images/lo3.svg' %}" alt="">
                     <div class="call-us-text">
                         <h1>Call Us</h1>
-                        <p>+(684) 555-0102</p>
+                        <p>+(234) 555-0102</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Islam Pillars Section -->
-    <section id="islam-pillars">
-        <div class="islam-pillars-texr">
+    <!-- Stories Section -->
+    <section id="pillars">
+        <div class="pillars-texr">
                 <p>Stories</p>
-                <h1>FIVE PILLARS OF ISLAM</h1>
+                <h1>DISCOVER AFRICAN STORIES</h1>
             </div>
-            <div class="islam-pillars-images">
+            <div class="pillars-images">
                 <div class="images-1">
                     <img src="{% static 'images/3,1.jpg' %}" alt="" onclick="openModal('video1')">
-                    <h1>SHAHADAH</h1>
+                    <h1>Shaka Zulu <br>The Real Story</h1>
                 </div>
                 <div class="images-1">
-                    <img src="{% static 'images/3,2.jpg' %}" alt="" onclick="openModal('video1')">
-                    <h1>SALAH</h1>
+                    <img src="{% static 'images/3,2.jpg' %}" alt="" onclick="openModal('video2')">
+                    <h1>Queen Amina <br>of Zazzau</h1>
                 </div>
                 <div class="images-1">
-                    <img src="{% static 'images/3,3.jpg' %}" alt="" onclick="openModal('video1')">
-                    <H1>SAWM</H1>
+                    <img src="{% static 'images/3,3.jpg' %}" alt="" onclick="openModal('video3')">
+                    <H1>The Story of <br> Mansa Musa</H1>
                 </div>
                 <div class="images-1">
-                    <img src="{% static 'images/,3,4.jpg' %}" alt="" onclick="openModal('video1')">
-                    <H1>JAKAH</H1>
+                    <img src="{% static 'images/,3,4.jpg' %}" alt="" onclick="openModal('video4')">
+                    <H1>The Ghana <br>Empire</H1>
                 </div>
                 <div class="images-1">
-                    <img src="{% static 'images/3,1.jpg' %}" alt="" onclick="openModal('video1')">
-                    <h1>HAJJ</h1>
+                    <img src="{% static 'images/3,5.jpg' %}" alt="" onclick="openModal('video5')">
+                    <h1>The Kingdom <br>of Kush</h1>
                 </div>
             </div>
+            <h1 class="more-stories-line">More stories coming soon...</h1>
     </section>
 
     <!-- Modal -->
     <div id="video1" class="modal">
-        <!-- Modal content -->
         <div class="modal-content">
             <span class="close" onclick="closeModal('video1')">&times;</span>
-            <!-- Add your video or book content here -->
-            <iframe width="95%" height="95%" src="https://www.youtube.com/embed/RroDdybvu5s?si=C9wNN6QJODP7ngXQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="98%" height="98%" src="https://www.youtube.com/embed/eTvggk5KT60?si=VwmtTc3ZT3GO_nv8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+    
+
+    <div id="video2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('video2')">&times;</span>
+            <iframe width="98%" height="98%" src="https://www.youtube.com/embed/w09OM2TNTvQ?si=BGIYbwFd5BgBDj7S&amp;start=30" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
     </div>
 
-    <div id="video2" class="modal">
-        <!-- Modal content -->
+    <div id="video3" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('video2')">&times;</span>
-            <!-- Add your video or book content here -->
-            <iframe src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
+            <iframe width="98%" height="98%" src="https://www.youtube.com/embed/pD-Xu5HXMmQ?si=XFeCseHl5WsxPOEs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
     </div>
+
+    <div id="video4" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('video2')">&times;</span>
+            <iframe width="98%" height="98%" src="https://www.youtube.com/embed/Xtxq-kp0rEw?si=8E2mXmw2ac-PAXMX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div id="video5" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('video2')">&times;</span>
+            <iframe width="98%" height="98%" src="https://www.youtube.com/embed/npMeN8kG3xs?si=Gz5kfHvlpseHerYz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+
 
 
     <!-- Forum Section -->
     <section id="forum">
         <div class="forum-container">
-            <h2>Discussion Forum</h2>
+            <h1>Discussion Forum</h1>
             <!-- Create New Topic Button -->
             <button id="newTopicBtn" onclick="openNewTopicModal()">Create New Topic</button>
             <!-- Forum Topics List -->
@@ -294,6 +377,7 @@
                 <div class="topic-card">
                     <h3>{{ topic.title }}</h3>
                     <p>{{ topic.description }}</p>
+                    <p class="discussion-meta">Author: {{ topic.author }}, Posted on: {{ topic.created_at }}</p>
                     <div class="topic-actions">
                         <button class="like-btn" onclick="likeTopic('{{ topic.id }}')">Like</button>
                         <button class="comment-btn" onclick="openCommentsModal('{{ topic.id }}')">Comment</button>
@@ -301,17 +385,16 @@
                     </div>
                     <!-- Comments Section -->
                     <div class="comments-section" id="commentsSection{{ topic.id }}">
-                        <!-- Use a separate query to fetch comments for the current topic -->
-                        {% for comment in topic.comments.all %}
-                            <div class="comment-container">
-                                <p>{{ comment.comment_text }}</p>
-                                <div class="comment-actions">
-                                    <button class="like-btn" onclick="likeComment('{{ comment.id }}')">Like</button>
-                                    <!-- Add reply functionality here -->
-                                </div>
-                            </div>
-                        {% endfor %}
+                        <h4>Comments</h4>
+                        <p class="comment-item">{{ comment.content }}</p>
+                        <ul class="comment-list">
+                            {% for comment in topic.comments.all %}
+                                <p class="comment-item">{{ comment.content }}</li>
+                                {% if not forloop.last %}<hr>{% endif %}
+                            {% endfor %}
+                        </ul>
                     </div>
+
                 </div>
                 {% endfor %}
             </div>
@@ -329,7 +412,7 @@
              <label for="topicTitle">Title:</label>
              <input type="text" id="topicTitle" name="topicTitle" required>
              <label for="topicDescription">Description:</label>
-             <textarea id="topicDescription" name="topicDescription" required></textarea>
+             <textarea id="topicDescription" rows="7" name="topicDescription" required></textarea>
              <button type="submit" onclick="createNewTopic()">Create</button>
          </form>
     </div>
@@ -345,13 +428,15 @@
             <!-- Comments will be dynamically added here -->
         </div>
         <!-- Add form or input fields for adding a comment -->
-        <form id="addCommentForm">
+        <form id="addCommentForm" action="/add-comment/{{ topic.id }}/" method="POST">
+            {% csrf_token %}
             <label for="commentText">Comment:</label>
-            <textarea id="commentText" name="commentText" rows="4" required></textarea>
-            <button type="button" onclick="addComment()">Add Comment</button>
+            <textarea id="commentText" name="commentText" rows="7" required></textarea>
+            <button type="submit" onclick="addComment()">Add Comment</button>
         </form>
     </div>
 </div>
+
 
 <!-- Reply Modal -->
 <div id="replyModal" class="modal">
@@ -367,6 +452,57 @@
         </form>
     </div>
 </div>
+
+
+<!-- Footer Section -->
+<footer id="footer">
+    <div class="container">
+        <div class="footer-event">
+            <div class="event1">
+                <img src="{% static 'images/LOGO1.png' %}" alt="logo" style="width: 100%;">
+                <p>Explore the world of interactive storytelling with StorySphere. Immerse yourself in captivating narratives, engage with multimedia content, and embark on a journey of knowledge and discovery.</p>
+                <div class="footer-icons">
+                    <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href=""><i class="fa-brands fa-twitter"></i></a>
+                    <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href=""><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="event2">
+                
+            </div>
+            <div class="event3">
+                <h1>Quick Links</h1>
+                <ul>
+                    <li>Home</li>
+                    <li>About Us</li>
+                    <li>Stories</li>
+                    <li>Forum</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+            <div class="event4">
+                <h1>Newsletter</h1>
+                <form>
+                    <input type="text" class="youremailaddrs" placeholder="Your Email">
+                </form>
+                <a href="">Subscribe</a>
+            </div>
+        </div>
+        <div class="lower-footer">
+            <div class="copyright">
+                <p>Copyright © 2024 StorySphere by <span>Teniola Ajani</span>. All Rights Reserved.</p>
+            </div>
+            <div class="prybacy">
+                <ul>
+                    <li>Privace & Policy</li>
+                    <li>Terms</li>
+                    <li>About us</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
 
 
 
@@ -461,7 +597,7 @@ function createNewTopic() {
 
 
 // Function to open Comments Modal
-function openCommentsModal() {
+function openCommentsModal(topicId) {
     // Code to open the modal for viewing and adding comments
     var modal = document.getElementById('commentsModal');
     if (modal) {
@@ -471,8 +607,53 @@ function openCommentsModal() {
                 closeModal('commentsModal');
             }
         });
+
+        // Set the topic ID in the add comment form action attribute
+        var addCommentForm = document.getElementById('addCommentForm');
+        addCommentForm.action = `/add-comment/${topicId}/`;
     }
 }
+
+// Function to open Comments Modal and fetch comments
+function openCommentsModal(topicId) {
+    var modal = document.getElementById('commentsModal');
+    if (modal) {
+        modal.style.display = "block";
+        modal.addEventListener("click", function(event) {
+            if (event.target === modal) {
+                closeModal('commentsModal');
+            }
+        });
+
+        // Set the topic ID in the add comment form action attribute
+        var addCommentForm = document.getElementById('addCommentForm');
+        addCommentForm.action = `/add-comment/${topicId}/`;
+
+        // Fetch comments for the topic using AJAX
+        fetch(`/get-comments/${topicId}/`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Update the comments section with fetched comments
+                var commentsContainer = document.getElementById('commentsSection' + topicId);
+                if (commentsContainer) {
+                    commentsContainer.innerHTML = ''; // Clear previous comments
+                    data.comments.forEach(comment => {
+                        commentsContainer.innerHTML += `<li class="comment-item">${comment.content}</li>`;
+                    });
+                }
+            } else {
+                console.error('Failed to fetch comments');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+}
+
+
+
 
 // Function to open Reply Modal
 function openReplyModal() {

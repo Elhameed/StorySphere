@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import ForumTopic, ForumComment, Like
 from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 
 
 # def index(request):
@@ -67,12 +68,29 @@ def create_topic(request):
 @login_required
 def add_comment(request, topic_id):
     if request.method == 'POST':
-        topic = ForumTopic.objects.get(id=topic_id)
+        topic = get_object_or_404(ForumTopic, id=topic_id)
         comment_text = request.POST.get('commentText')
         author = request.user
-        comment = ForumComment.objects.create(topic=topic, comment_text=comment_text, author=author)
-        return JsonResponse({'success': True})
-    return JsonResponse({'success': False})
+    
+        # Print statement to debug
+        print(f'Received comment_text: {comment_text}')
+
+        if not comment_text:
+            return JsonResponse({'success': False, 'message': 'Comment text is required.'}, status=400)
+
+        try:
+            comment = ForumComment.objects.create(topic=topic, comment_text=comment_text, author=author)
+            return JsonResponse({'success': True, 'message': 'Comment added successfully.'})
+        except Exception as e:
+            return JsonResponse({'success': False, 'message': str(e)}, status=500)
+
+    return JsonResponse({'success': False, 'message': 'Invalid request method.'}, status=405)
+
+
+def get_comments(request, topic_id):
+    comments = ForumComment.objects.filter(topic_id=topic_id)
+    comments_data = [{'content': comment.comment_text} for comment in comments]
+    return JsonResponse({'success': True, 'comments': comments_data})
 
 @login_required
 def like_topic(request, topic_id):
