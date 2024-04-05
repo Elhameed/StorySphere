@@ -8,6 +8,8 @@
 
     <title>Document</title>
 
+    {% load custom_tags %}
+
     {% load static %} <!-- Load the static template tag -->
 
     <!-- External CSS -->
@@ -18,6 +20,160 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400&display=swap" rel="stylesheet">
+
+    <style>
+
+        .Return-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("{% static 'images/herobg2.jpg' %}"); 
+            background-size: cover;
+            background-position: center;
+            opacity: 0.8; /* Adjust overlay opacity */
+          }
+        #forum {
+            padding: 50px 0;
+        }
+        
+        .forum-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .forum-container h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        #newTopicBtn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        
+        .forum-topics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .topic-card {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        
+        .topic-card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .topic-description {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .topic-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .topic-actions button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        
+        .comments-section {
+            margin-top: 20px;
+        }
+        
+        .comments-section h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .comment {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        
+        .comment p {
+            margin-bottom: 5px;
+        }
+        
+        .comment-actions button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 3px 6px;
+            font-size: 12px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        /* Style for modal container */
+        .modal {
+            display: none; /* Initially hide the modal */
+            position: fixed;
+            z-index: 999999999999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            overflow: auto; /* Enable scrolling if content exceeds modal size */
+        }
+
+        /* Style for modal content */
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fefefe; /* Background color of the modal content */
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%; /* Adjust the width as per your requirement */
+            max-width: 800px; /* Adjust the maximum width as per your requirement */
+            overflow: auto; /* Enable scrolling if content exceeds modal size */
+        }
+
+        /* Style for close button */
+        .close {
+            color: #aaa; /* Default color */
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black; /* Hover color */
+            text-decoration: none;
+        }
+                
+
+    </style>
 </head>
 <body>
     
@@ -129,8 +285,98 @@
         </div>
     </div>
 
-   
 
+    <!-- Forum Section -->
+    <section id="forum">
+        <div class="forum-container">
+            <h2>Discussion Forum</h2>
+            <!-- Create New Topic Button -->
+            <button id="newTopicBtn" onclick="openNewTopicModal()">Create New Topic</button>
+            <!-- Forum Topics List -->
+<div class="forum-topics">
+    <!-- Django Templating to loop through topics -->
+    {% for topic in topics %}
+    <div class="topic-card">
+        <h3>{{ topic.title }}</h3>
+        <p>{{ topic.description }}</p>
+        <div class="topic-actions">
+            <button class="like-btn" onclick="likeTopic('{{ topic.id }}')">Like</button>
+            <button class="comment-btn" onclick="openCommentsModal('{{ topic.id }}')">Comment</button>
+            <button class="share-btn" onclick="shareTopic()">Share</button>
+        </div>
+        <!-- Comments Section -->
+        <div class="comments-section" id="commentsSection{{ topic.id }}">
+            <!-- Use a separate query to fetch comments for the current topic -->
+            {% for comment in topic.comments.all %}
+                <div class="comment-container">
+                    <p>{{ comment.comment_text }}</p>
+                    <div class="comment-actions">
+                        <button class="like-btn" onclick="likeComment('{{ comment.id }}')">Like</button>
+                        <!-- Add reply functionality here -->
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+        </div>
+    </section>
+
+<!-- New Topic Modal -->
+<div id="newTopicModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('newTopicModal')">&times;</span>
+        <h2>Create New Topic</h2>
+        <form id="newTopicForm" method="POST" action="{% url 'create_topic' %}">
+            {% csrf_token %}
+             <label for="topicTitle">Title:</label>
+             <input type="text" id="topicTitle" name="topicTitle" required>
+             <label for="topicDescription">Description:</label>
+             <textarea id="topicDescription" name="topicDescription" required></textarea>
+             <button type="submit" onclick="createNewTopic()">Create</button>
+         </form>
+    </div>
+</div>
+
+<!-- Comments Modal -->
+<div id="commentsModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('commentsModal')">&times;</span>
+        <!-- Add content for viewing and adding comments -->
+        <h2>Comments</h2>
+        <div id="commentsContainer">
+            <!-- Comments will be dynamically added here -->
+        </div>
+        <!-- Add form or input fields for adding a comment -->
+        <form id="addCommentForm">
+            <label for="commentText">Comment:</label>
+            <textarea id="commentText" name="commentText" rows="4" required></textarea>
+            <button type="button" onclick="addComment()">Add Comment</button>
+        </form>
+    </div>
+</div>
+
+<!-- Reply Modal -->
+<div id="replyModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('replyModal')">&times;</span>
+        <!-- Add content for replying to comments -->
+        <h2>Reply to Comment</h2>
+        <!-- Add form or input fields for replying to a comment -->
+        <form id="replyForm">
+            <label for="replyText">Reply:</label>
+            <textarea id="replyText" name="replyText" rows="4" required></textarea>
+            <button type="button" onclick="replyToComment()">Reply</button>
+        </form>
+    </div>
+</div>
+
+
+
+   
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
     <script type="text/javascript">
 // Function to open modal
 function openModal(modalId) {
@@ -160,6 +406,178 @@ function closeModal(modalId) {
         modal.style.display = "none";
     }
 }
+
+
+
+// Function to open New Topic Modal
+function openNewTopicModal() {
+    var modal = document.getElementById('newTopicModal');
+    if (modal) {
+        modal.style.display = "block";
+        modal.addEventListener("click", function(event) {
+            if (event.target === modal) {
+                closeModal('newTopicModal');
+            }
+        });
+    }
+}
+
+function createNewTopic() {
+    var form = document.getElementById('newTopicForm');
+    var formData = new FormData(form);
+    
+    // Validate form data (optional)
+    if (!formData.get('topicTitle') || !formData.get('topicDescription')) {
+        alert('Please fill in all fields.');
+        return;
+    }
+
+    // Prevent multiple submissions
+    form.removeEventListener('submit', submitListener);
+
+    // Get the CSRF token from the cookie
+    const csrfToken = getCookie('csrftoken');
+
+    // Send AJAX request to create a new topic
+    fetch('/create-topic/', {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': csrfToken,
+        },
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Close the modal and update the UI as needed
+            closeModal('newTopicModal');
+            console.log('Topic created successfully');
+            // You may update the UI to display the newly created topic
+            window.location.reload();  // Optional: Reload the page to update the topic list
+        } else {
+            console.error('Failed to create the topic');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+
+
+// Function to open Comments Modal
+function openCommentsModal() {
+    // Code to open the modal for viewing and adding comments
+    var modal = document.getElementById('commentsModal');
+    if (modal) {
+        modal.style.display = "block";
+        modal.addEventListener("click", function(event) {
+            if (event.target === modal) {
+                closeModal('commentsModal');
+            }
+        });
+    }
+}
+
+// Function to open Reply Modal
+function openReplyModal() {
+    // Code to open the modal for replying to comments
+    var modal = document.getElementById('replyModal');
+    if (modal) {
+        modal.style.display = "block";
+        modal.addEventListener("click", function(event) {
+            if (event.target === modal) {
+                closeModal('replyModal');
+            }
+        });
+    }
+}
+
+// Functions for interaction buttons (like, share, etc.)
+function likeTopic(topicId) {
+    // Get the CSRF token from the cookie
+    const csrfToken = getCookie('csrftoken');
+    
+    // Code to handle liking a topic via AJAX
+    fetch(`/like-topic/${topicId}/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrfToken,
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Update the UI as needed
+            console.log('Topic liked successfully');
+        } else {
+            console.error('Failed to like the topic');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+function likeComment(commentId) {
+    // Get the CSRF token from the cookie
+    const csrfToken = getCookie('csrftoken');
+    
+    // Code to handle liking a comment via AJAX
+    fetch(`/like-comment/${commentId}/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrfToken,
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Update the UI as needed
+            console.log('Comment liked successfully');
+        } else {
+            console.error('Failed to like the comment');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+
+function shareTopic() {
+    // Code to handle sharing a topic on social media
+    console.log('Share button clicked');
+}
+
+// Function to close modal
+function closeModal(modalId) {
+    var modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = "none";
+    }
+}
+
+// Function to get CSRF token for AJAX requests
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+
+
 
 
     </script>

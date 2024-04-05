@@ -23,4 +23,8 @@ urlpatterns = [
     path('index/', views.index, name='index'),
     path('register/', views.register, name='register'),
     path('login/', views.user_login, name='login'),
+    path('create-topic/', views.create_topic, name='create_topic'),
+    path('add-comment/<int:topic_id>/', views.add_comment, name='add_comment'),
+    path('like-topic/<int:topic_id>/', views.like_topic, name='like_topic'),
+    path('like-comment/<int:comment_id>/', views.like_comment, name='like_comment'),
 ]
