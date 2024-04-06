@@ -129,7 +129,7 @@ USE_TZ = False
 
 import os
 
-STATIC_URL = 'static/'
+STATIC_URL = 'StorySphere/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'StorySphere/static'),
 ]
