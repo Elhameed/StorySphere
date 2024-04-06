@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
 from StorySphere import views
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.welcome, name='welcome'),
@@ -29,3 +31,6 @@ urlpatterns = [
     path('like-topic/<int:topic_id>/', views.like_topic, name='like_topic'),
     path('like-comment/<int:comment_id>/', views.like_comment, name='like_comment'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
