@@ -30,10 +30,10 @@ oauthlib==3.2.0
 olefile==0.46
 paramiko==2.9.3
 pexpect==4.8.0
-Pillow==9.0.1
 protobuf==3.12.4
 psycopg2-binary==2.9.9
 ptyprocess==0.7.0
+
 pycups==2.0.1
 PyGObject==3.42.1
 PyJWT==2.3.0
