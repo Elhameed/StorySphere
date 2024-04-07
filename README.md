@@ -13,7 +13,7 @@ Welcome to Storysphere, a platform for sharing stories in an interactive manner 
 
 ## Introduction
 
-Storysphere is a Django-based web application that allows users to create and share stories, engage in discussions through forums, and interact with other users. This README provides instructions on setting up and running the Storysphere app on your local machine.
+Storysphere is a Django-based web application that allows users to read and watch stories, engage in discussions through forums, and interact with other users. This README provides instructions on setting up and running the Storysphere app on your local machine.
 
 ![StorySphere](https://github.com/Elhameed/StorySphere/blob/main/Screenshot%20from%202024-04-07%2008-05-28.png)
 
