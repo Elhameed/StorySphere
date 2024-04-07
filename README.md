@@ -22,8 +22,7 @@ Storysphere is a Django-based web application that allows users to read and watc
 - User registration and authentication
 - View and read stories
 - Discussion forums with topics and comments
-- Like and share stories and comments
-- Responsive design for mobile and desktop
+- Like and share stories and comment
 
 ## Requirements
 
